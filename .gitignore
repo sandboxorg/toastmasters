@@ -1,4 +1,6 @@
 .idea
 *.iml
+*.ipr
+*.iws
 bower_components
 node_modules
