@@ -2,7 +2,6 @@
 *.iml
 *.ipr
 *.iws
-/bower_components/
 /node_modules/
 /build/
 *.log
