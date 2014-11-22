@@ -31,11 +31,29 @@
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="ahCounter">
-		<section id="ah-counter">Ah Counter / Grammarian</section>
+		<section id="ah-counter">
+			<div class="container-fluid">
+				<div class="page-header">
+					<h1>Ah Counter</h1>
+				</div>
+			</div>
+
+			<div class="container-fluid">
+				<div class="page-header">
+					<h1>Grammarian</h1>
+				</div>
+			</div>
+		</section>
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="voteCounter">
-		<section id="vote-counter">Vote Counter</section>
+		<section id="vote-counter">
+			<div class="container-fluid">
+				<div class="page-header">
+					<h1>Vote Counter</h1>
+				</div>
+			</div>
+		</section>
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="tableTopics">
@@ -55,48 +73,67 @@
 	</script>
 
 	<script type="text/x-handlebars" data-template-name="info">
-		<section id="info">Info</section>
+		<section id="info">
+			<div class="container-fluid">
+				<div class="page-header">
+					<h1>Info</h1>
+				</div>
+			</div>
+		</section>
 	</script>
 
-		<div class="navbar navbar-inverse navbar-fixed-bottom">
+		<div id="navbar-main" class="navbar navbar-inverse navbar-fixed-bottom">
 			<div class="container-fluid">
-				<ul class="nav navbar-nav navbar-left mobile-navbar-nav">
-					<li>
-						<a href="#">
-							<i class="glyphicon glyphicon-home"></i>
-						</a>
-					</li>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="#" class="navbar-brand">
+						<i class="glyphicon glyphicon-home"></i>
+						TM Tools
+					</a>
+				</div>
 
-					<li>
-						<a href="#/timer">
-							<i class="glyphicon glyphicon-time"></i>
-						</a>
-					</li>
+				<div id="main-nav" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li id="timer-nav">
+							<a href="#/timer">
+								<i class="glyphicon glyphicon-time"></i>
+								Timer
+							</a>
+						</li>
 
-					<li>
-						<a href="#/ahCounter">
-							<i class="glyphicon glyphicon-asterisk"></i>
-						</a>
-					</li>
+						<li id="ah-counter-nav">
+							<a href="#/ahCounter">
+								<i class="glyphicon glyphicon-asterisk"></i>
+								Ah Counter / Grammarian
+							</a>
+						</li>
 
-					<li>
-						<a href="#/voteCounter">
-							<i class="glyphicon glyphicon-ok"></i>
-						</a>
-					</li>
+						<li id="vote-counter-nav">
+							<a href="#/voteCounter">
+								<i class="glyphicon glyphicon-ok"></i>
+								Vote Counter
+							</a>
+						</li>
 
-					<li>
-						<a href="#/tableTopics">
-							<i class="glyphicon glyphicon-comment"></i>
-						</a>
-					</li>
+						<li id="table-topics-nav">
+							<a href="#/tableTopics">
+								<i class="glyphicon glyphicon-comment"></i>
+								Table Topics
+							</a>
+						</li>
 
-					<li class="pull-right">
-						<a href="#/info">
-							<i class="glyphicon glyphicon-info-sign"></i>
-						</a>
-					</li>
-				</ul>
+						<li id="info-nav">
+							<a href="#/info">
+								<i class="glyphicon glyphicon-info-sign"></i>
+								Info
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 

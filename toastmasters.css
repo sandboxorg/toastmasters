@@ -1,11 +1,3 @@
 body {
     padding-bottom: 50px;
 }
-
-ul.mobile-navbar-nav {
-    width: 100%;
-}
-
-ul.mobile-navbar-nav li {
-    display: inline-block;
-}
