@@ -102,6 +102,6 @@
 	});
 
 	$(document).on('ready', function(){
-		$('#navbar-main').on('click', 'a', _fn.handleNavClick);
+		$(document).on('click', _fn.handleNavClick);
 	})
 }(jQuery);
