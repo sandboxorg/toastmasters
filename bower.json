@@ -1,0 +1,30 @@
+{
+  "name": "toastmasters",
+  "version": "1.0.0",
+  "authors": [
+    "Steve Good <steve.good@bnsf.com>"
+  ],
+  "description": "A collection of useful tools for Toastmasters",
+  "main": "index.html",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "Toasmasters"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.3.1",
+    "ember": "~1.8.1",
+    "underscore": "~1.7.0",
+    "ember-data": "~0.0.14"
+  }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Toastmasters Tools</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/app.css"/>
+
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="bower_components/handlebars/handlebars.min.js"></script>
+		<script src="bower_components/ember/ember.prod.js"></script>
+		<script src="bower_components/ember-data/ember-data.prod.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+
+	<script type="text/x-handlebars" data-template-name="home">
+		<section id="home">
+			<div class="container-fluid">
+				<div class="page-header">
+					<h1>Toastmasters Tools</h1>
+				</div>
+			</div>
+		</section>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="timer">
+		<section id="timer">
+			<div class="container-fluid">
+				<div class="page-header">
+					<h1>Timer</h1>
+				</div>
+			</div>
+		</section>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="ahcounter">
+		<section id="ah-counter">Ah Counter / Grammarian</section>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="votecounter">
+		<section id="vote-counter">Vote Counter</section>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="tabletopics">
+		<section id="table-topics">
+			<div class="container-fluid">
+				<div class="page-header">
+					<h1>Table Topics</h1>
+				</div>
+
+				<section id="main">
+					<ul id="tableTopics-list" class="list-group">
+						{{#each tableTopic in model}}
+							<li class="list-group-item">{{tableTopic.question}}</li>
+						{{/each}}
+					</ul>
+				</section>
+			</div>
+		</section>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="info">
+		<section id="info">Info</section>
+	</script>
+
+		<div class="navbar navbar-inverse navbar-fixed-bottom">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav navbar-left mobile-navbar-nav">
+					<li>
+						<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+						</a>
+					</li>
+
+					<li>
+						<a href="#/timer">
+							<i class="glyphicon glyphicon-time"></i>
+						</a>
+					</li>
+
+					<li>
+						<a href="#/ah-counter">
+							<i class="glyphicon glyphicon-asterisk"></i>
+						</a>
+					</li>
+
+					<li>
+						<a href="#/vote-counter">
+							<i class="glyphicon glyphicon-ok"></i>
+						</a>
+					</li>
+
+					<li>
+						<a href="#/table-topics">
+							<i class="glyphicon glyphicon-comment"></i>
+						</a>
+					</li>
+
+					<li class="pull-right">
+						<a href="#/info">
+							<i class="glyphicon glyphicon-info-sign"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<script src="js/app.js"></script>
+	</body>
+</html>
