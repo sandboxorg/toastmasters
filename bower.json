@@ -5,7 +5,7 @@
     "Steve Good <steve.good@bnsf.com>"
   ],
   "description": "A collection of useful tools for Toastmasters",
-  "main": "index.html",
+  "main": "app/index.html",
   "moduleType": [
     "amd"
   ],
@@ -25,6 +25,9 @@
     "bootstrap": "~3.3.1",
     "ember": "~1.8.1",
     "underscore": "~1.7.0",
-    "ember-data": "~0.0.14"
+    "ember-data": "~1.0.0-beta.11"
+  },
+  "resolutions": {
+    "ember": "~1.8.1"
   }
 }

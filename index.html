@@ -3,15 +3,10 @@
 	<head>
 		<title>Toastmasters Tools</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-		<link rel="stylesheet" href="css/app.css"/>
-
-		<script src="bower_components/jquery/dist/jquery.min.js"></script>
-		<script src="bower_components/handlebars/handlebars.min.js"></script>
-		<script src="bower_components/ember/ember.prod.js"></script>
-		<script src="bower_components/ember-data/ember-data.prod.js"></script>
-		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<!-- bower:css -->
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+		<!-- endbower -->
+		<link rel="stylesheet" href="toastmasters.css" />
 	</head>
 	<body>
 
@@ -35,15 +30,15 @@
 		</section>
 	</script>
 
-	<script type="text/x-handlebars" data-template-name="ahcounter">
+	<script type="text/x-handlebars" data-template-name="ahCounter">
 		<section id="ah-counter">Ah Counter / Grammarian</section>
 	</script>
 
-	<script type="text/x-handlebars" data-template-name="votecounter">
+	<script type="text/x-handlebars" data-template-name="voteCounter">
 		<section id="vote-counter">Vote Counter</section>
 	</script>
 
-	<script type="text/x-handlebars" data-template-name="tabletopics">
+	<script type="text/x-handlebars" data-template-name="tableTopics">
 		<section id="table-topics">
 			<div class="container-fluid">
 				<div class="page-header">
@@ -51,11 +46,9 @@
 				</div>
 
 				<section id="main">
-					<ul id="tableTopics-list" class="list-group">
-						{{#each tableTopic in model}}
-							<li class="list-group-item">{{tableTopic.question}}</li>
-						{{/each}}
-					</ul>
+					<div class="well">
+						<strong>#{{model.id}}:</strong> {{model.question}}
+					</div>
 				</section>
 			</div>
 		</section>
@@ -81,19 +74,19 @@
 					</li>
 
 					<li>
-						<a href="#/ah-counter">
+						<a href="#/ahCounter">
 							<i class="glyphicon glyphicon-asterisk"></i>
 						</a>
 					</li>
 
 					<li>
-						<a href="#/vote-counter">
+						<a href="#/voteCounter">
 							<i class="glyphicon glyphicon-ok"></i>
 						</a>
 					</li>
 
 					<li>
-						<a href="#/table-topics">
+						<a href="#/tableTopics">
 							<i class="glyphicon glyphicon-comment"></i>
 						</a>
 					</li>
@@ -107,6 +100,14 @@
 			</div>
 		</div>
 
-		<script src="js/app.js"></script>
+	<!-- bower:js -->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/handlebars/handlebars.js"></script>
+	<script src="bower_components/ember/ember.js"></script>
+	<script src="bower_components/underscore/underscore.js"></script>
+	<script src="bower_components/ember-data/ember-data.js"></script>
+	<!-- endbower -->
+	<script src="toastmasters.js" type="text/javascript"></script>
 	</body>
 </html>
