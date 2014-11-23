@@ -10,8 +10,44 @@
 
 		handleNavClick: function() {
 			$('#main-nav.collapse:visible').collapse('hide');
+		},
+
+		elapsedMinutesAndSeconds: function(start, end) {
+			var diff = Math.abs(end.getTime() - start.getTime()),
+				dDiff = new Date(),
+				s = new Date(0);
+
+			dDiff.setTime(diff);
+
+			var minutes = dDiff.getMinutes() - s.getMinutes();
+			var seconds = dDiff.getSeconds() - s.getSeconds();
+			return {minutes: minutes, seconds: seconds};
+		}
+	},
+
+	tm = {
+		timer_range: {
+			one_two		:	{green: 1, yellow:1.5, red: 2},
+			two_three	:	{green: 2, yellow:2.5, red: 3},
+			five_seven	:	{green: 5, yellow:6,   red: 7}
 		}
 	};
+
+	Ember.Handlebars.helper('elapsedTime', function(start, end){
+		if (start !== null && end !== null && start !== undefined && end !== undefined) {
+			var elapsed = _fn.elapsedMinutesAndSeconds(start, end),
+				minutes = elapsed.minutes,
+				seconds = elapsed.seconds;
+
+			if (seconds < 10) {
+				seconds = '0' + seconds;
+			}
+
+			return new Ember.Handlebars.SafeString(minutes + ':' + seconds);
+		} else {
+			return new Ember.Handlebars.SafeString("0:00");
+		}
+	});
 
 	$.getJSON('table-topics.json', function(result){
 		window.Toastmasters = Ember.Application.create();
@@ -29,19 +65,35 @@
 		Toastmasters.Timer = DS.Model.extend({
 			who: DS.attr('string'),
 			start: DS.attr('date'),
-			end: DS.attr('date')
+			end: DS.attr('date'),
+			green: DS.attr('number'),
+			yellow: DS.attr('number'),
+			red: DS.attr('number'),
+			listGroupItemClass: function() {
+				var start = this.get('start'), end = this.get('end'), red = this.get('red');
+				if (start !== null && end !== null && start !== undefined && end !== undefined) {
+					var minutes = _fn.elapsedMinutesAndSeconds(start, end).minutes;
+					if (minutes + 0.5 > red) {
+						return new Handlebars.SafeString("list-group-item-danger");
+					} else {
+						return new Handlebars.SafeString("list-group-item-success");
+					}
+				} else {
+					return new Handlebars.SafeString("");
+				}
+			}.property('start', 'end', 'range')
 		});
 
 		Toastmasters.AhCounter = DS.Model.extend({
 			who: DS.attr('string'),
-			ahCount: DS.attr('int'),
-			crutchCount: DS.attr('int'),
-			wotdCount: DS.attr('int')
+			ahCount: DS.attr('number'),
+			crutchCount: DS.attr('number'),
+			wotdCount: DS.attr('number')
 		});
 
 		Toastmasters.Vote = DS.Model.extend({
 			who: DS.attr('string'),
-			count: DS.attr('int')
+			count: DS.attr('number')
 		});
 
 		Toastmasters.TableTopic = DS.Model.extend({
@@ -54,7 +106,35 @@
 			}
 		});
 
-		Toastmasters.Timer.FIXTURES = [];
+		Toastmasters.Timer.FIXTURES = [
+			{
+				id: 1,
+				who: "Judy",
+				start: null,
+				end: null,
+				green: tm.timer_range.five_seven.green,
+				yellow: tm.timer_range.five_seven.yellow,
+				red: tm.timer_range.five_seven.red
+			},
+			{
+				id: 2,
+				who: "Steve",
+				start: new Date("2014", "11", "22", "14", "22", "01"),
+				end: new Date("2014", "11", "22", "14", "29", "04"),
+				green: tm.timer_range.five_seven.green,
+				yellow: tm.timer_range.five_seven.yellow,
+				red: tm.timer_range.five_seven.red
+			},
+			{
+				id: 3,
+				who: "Dave",
+				start: new Date("2014", "11", "22", "14", "22", "01"),
+				end: new Date("2014", "11", "22", "14", "23", "27"),
+				green: tm.timer_range.one_two.green,
+				yellow: tm.timer_range.one_two.yellow,
+				red: tm.timer_range.one_two.red
+			}
+		];
 		Toastmasters.TimerRoute = Ember.Route.extend({
 			activate: function() {
 				_fn.activeNav('#timer-nav');
@@ -102,6 +182,18 @@
 	});
 
 	$(document).on('ready', function(){
-		$(document).on('click', _fn.handleNavClick);
+		$(document)
+			.on('click', _fn.handleNavClick)
+			.on('click', '.start-btn:visible', function(){
+				$('#timer').addClass('timing');
+			})
+			.on('click', '#stop-btn', function(){
+				$('#timer')
+					.removeClass('timing')
+					.removeClass('red')
+					.removeClass('yellow')
+					.removeClass('green');
+			});
+
 	})
 }(jQuery);
