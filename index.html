@@ -29,9 +29,50 @@
 
 	<script type="text/x-handlebars" data-template-name="timer">
 		<section id="timer">
-			<div class="container-fluid">
-				<div class="page-header">
-					<h1>Timer</h1>
+			<div id="indicator"></div>
+			<div class="content">
+				<div class="container-fluid">
+					<div class="page-header">
+						<h1>Timer</h1>
+					</div>
+
+					<ul id="timer-controls" class="list-group">
+						<li class="list-group-item">
+							<div class="row">
+								<div class="col-xs-8">
+									<strong>Lauren</strong>
+								</div>
+								<div class="col-xs-2">
+									<span class="badge">0:00</span>
+								</div>
+								<div class="col-xs-2">
+									<button id="stop-btn" class="btn btn-default btn-xs">
+										<i class="glyphicon glyphicon-stop"></i>
+									</button>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+					<ul id="timer-report" class="list-group">
+						{{#each timer in model}}
+						<li {{bind-attr class=":list-group-item timer.listGroupItemClass"}}>
+							<div class="row">
+								<div class="col-xs-8">
+									<strong>{{timer.who}}</strong>
+								</div>
+								<div class="col-xs-2">
+									<span class="badge">{{elapsedTime timer.start timer.end}}</span>
+								</div>
+								<div class="col-xs-2">
+									<button class="btn btn-default btn-xs start-btn">
+										<i class="glyphicon glyphicon-play"></i>
+									</button>
+								</div>
+							</div>
+						</li>
+						{{/each}}
+					</ul>
 				</div>
 			</div>
 		</section>
