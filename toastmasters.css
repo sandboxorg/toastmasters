@@ -32,6 +32,11 @@ body {
     color: #000;
 }
 
+#timer.timing.red .page-header .glyphicon, #timer.timing.green .page-header .glyphicon {
+    color: #fff;
+    opacity: 0.75;
+}
+
 #timer.timing #timer-controls {
     display: inherit;
 }
