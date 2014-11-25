@@ -1,0 +1,6 @@
+language: html
+branches:
+  only:
+    - master
+script: npm install
+  && ./node_modules/.bin/grunt wiredep jshint uglify cssmin copy gh-pages
