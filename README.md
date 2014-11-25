@@ -2,6 +2,10 @@
 
 A collection of useful tools for Toastmasters.
 
+## Status
+
+[![Build Status](https://travis-ci.org/stevegood/toastmasters.svg?branch=master)](https://travis-ci.org/stevegood/toastmasters)
+
 ## Dependencies
 
 - npm
