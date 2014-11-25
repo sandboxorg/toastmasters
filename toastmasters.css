@@ -1,50 +1,5 @@
-body {
-    padding-bottom: 50px;
-}
+/*
+ toastmasters 2014-11-25 
+*/
 
-#timer #indicator {
-    z-index: -1;
-    position: fixed;
-    top: 0;
-    bottom: 50px;
-    left: 0;
-    right: 0;
-}
-
-#timer.green #indicator {
-    background-color: #00760b;
-}
-
-#timer.yellow #indicator {
-    background-color: #fcff00;
-}
-
-#timer.red #indicator {
-    background-color: #d60000;
-}
-
-#timer.red .content, #timer.green .content {
-    color: #FFF;
-}
-
-#timer #timer-controls {
-    display: none;
-    color: #000;
-}
-
-#timer.timing.red .page-header .glyphicon, #timer.timing.green .page-header .glyphicon {
-    color: #fff;
-    opacity: 0.75;
-}
-
-#timer.timing #timer-controls {
-    display: inherit;
-}
-
-#timer.timing #timer-report {
-    display: none;
-}
-
-.list-group-item-danger .start-btn, .list-group-item-success .start-btn {
-    display: none;
-}
+body{padding-bottom:50px}#timer #indicator{z-index:-1;position:fixed;top:0;bottom:50px;left:0;right:0}#timer.green #indicator{background-color:#00760b}#timer.yellow #indicator{background-color:#fcff00}#timer.red #indicator{background-color:#d60000}#timer.green .content,#timer.red .content{color:#FFF}#timer #timer-controls{display:none;color:#000}#timer.timing.green .page-header .glyphicon,#timer.timing.red .page-header .glyphicon{color:#fff;opacity:.75}#timer.timing #timer-controls{display:inherit}#timer.timing #timer-report,.list-group-item-danger .start-btn,.list-group-item-success .start-btn{display:none}
