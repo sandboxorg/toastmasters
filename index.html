@@ -46,10 +46,10 @@
 						<li class="list-group-item">
 							<div class="row">
 								<div class="col-xs-8">
-									<strong>Judy</strong>
+									<strong id="current-timer-who"></strong>
 								</div>
 								<div class="col-xs-2">
-									<span class="badge">0:00</span>
+									<span id="current-timer-time" class="badge">0:00</span>
 								</div>
 								<div class="col-xs-2">
 									<button id="stop-btn" class="btn btn-default btn-xs">
@@ -71,7 +71,7 @@
 									<span class="badge">{{elapsedTime timer.start timer.end}}</span>
 								</div>
 								<div class="col-xs-2">
-									<button class="btn btn-default btn-xs start-btn">
+									<button class="btn btn-default btn-xs start-btn" {{bind-attr data-name="timer.who" id="timer.id"}}>
 										<i class="glyphicon glyphicon-play"></i>
 									</button>
 								</div>

@@ -22,6 +22,46 @@
 			var minutes = dDiff.getMinutes() - s.getMinutes();
 			var seconds = dDiff.getSeconds() - s.getSeconds();
 			return {minutes: minutes, seconds: seconds};
+		},
+
+		formatStamp: function(stamp) {
+			if (stamp.seconds < 10) {
+				stamp.seconds = '0' + stamp.seconds;
+			}
+			return stamp.minutes + ':' + stamp.seconds;
+		},
+
+		startTiming: function(id, name) {
+			var $stopBtn = $('#stop-btn');
+			$('#current-timer-who').text(name);
+			$stopBtn.data('timer', id);
+			$('#timer').addClass('timing');
+
+			tm.timing = true;
+			var start = new Date();
+			!function onTick() {
+				var now = new Date(),
+					stamp = _fn.elapsedMinutesAndSeconds(start, now),
+					stampStr = _fn.formatStamp(stamp);
+
+				$('#current-timer-time').text(stampStr);
+				$stopBtn.data('time', stampStr);
+
+				if (tm.timing) {
+					setTimeout(onTick, 1000);
+				}
+			}();
+		},
+
+		stopTiming: function() {
+			tm.timing = false;
+			var $this = $(this);
+			console.log($this.data('time'));
+			$('#timer')
+				.removeClass('timing')
+				.removeClass('red')
+				.removeClass('yellow')
+				.removeClass('green');
 		}
 	},
 
@@ -30,7 +70,8 @@
 			one_two		:	{green: 1, yellow:1.5, red: 2},
 			two_three	:	{green: 2, yellow:2.5, red: 3},
 			five_seven	:	{green: 5, yellow:6,   red: 7}
-		}
+		},
+		timing: false
 	};
 
 	Ember.Handlebars.helper('elapsedTime', function(start, end){
@@ -192,15 +233,10 @@
 		$(document)
 			.on('click', _fn.handleNavClick)
 			.on('click', '.start-btn:visible', function(){
-				$('#timer').addClass('timing');
+				var $this = $(this);
+				_fn.startTiming($this.attr('id'), $this.data('name'));
 			})
-			.on('click', '#stop-btn', function(){
-				$('#timer')
-					.removeClass('timing')
-					.removeClass('red')
-					.removeClass('yellow')
-					.removeClass('green');
-			});
+			.on('click', '#stop-btn', _fn.stopTiming);
 
 	})
 }(jQuery);

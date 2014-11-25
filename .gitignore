@@ -1,7 +1,0 @@
-/.idea/
-*.iml
-*.ipr
-*.iws
-/node_modules/
-/build/
-*.log
