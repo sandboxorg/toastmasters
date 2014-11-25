@@ -56,6 +56,7 @@
 		Toastmasters.Router.map(function(){
 			this.resource('home', {path: '/'});
 			this.resource('timer', {path: '/timer'});
+			this.route('refreshTableTopics', {path: '/tableTopics/refresh'});
 			this.resource('ahCounter', {path: '/ahCounter'});
 			this.resource('voteCounter', {path: '/voteCounter'});
 			this.resource('tableTopics', {path: '/tableTopics'});
@@ -171,6 +172,12 @@
 			},
 			model: function() {
 				return this.store.find('tableTopic', Math.floor(Math.random() * (1 - result.tableTopics.length) + result.tableTopics.length));
+			}
+		});
+
+		Toastmasters.RefreshTableTopicsRoute = Ember.Route.extend({
+			activate: function() {
+				this.transitionTo('tableTopics');
 			}
 		});
 
